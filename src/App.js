@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import Countdown from "./Components/Countdown";
 
 function App() {
 
 	return (
-		<div>
+		<Fragment>
 			<Countdown number='20'/>
-		</div>
+		</Fragment>
 	);
 }
 
