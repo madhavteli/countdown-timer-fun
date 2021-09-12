@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Countdown = ( props ) => {
 	let [count, setCount] = useState( props.number ? props.number : 30 );
 
-	const decreaseCount = () => {
-		if( count > 0 ) {
-			count--;
-			setCount( count );
-		} else {
-			clearInterval( interval );
-		}
-	};
+	useEffect(()=> {
+		const interval = setInterval( () => {
+			if(count > 0 ){
+				setCount(--count);
+			}
+		}, 1000 );
 
-	let interval = setInterval( decreaseCount, 1000 );
+		return () => clearInterval( interval );
+
+	}, [count]);
 
 	return (
 		<div style={{ textAlign: 'center' }}>
